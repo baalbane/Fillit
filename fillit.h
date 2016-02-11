@@ -11,7 +11,6 @@ typedef struct		s_list
 {
 	int		*coord;
 	int		**point;
-	int		id;
 	struct s_list	*next;
 }			t_list;
 
@@ -25,11 +24,15 @@ int	**taballoc(int size);
 int	freetab(int **tab, int nbr);
 
 int	free_list(t_list *lst);
+int	free_all(t_list *lst);
 t_list	*new_list();
 void	init_list(t_list *lst);
 
 t_list	*goread(int fd);
 int	fill_lst(t_list *new, t_list *prev, char *tetri);
 int	check(char *tetri);
+
+int	inittab(char **tab, int len);
+int	printmap(t_list *start, int len);
 
 #endif

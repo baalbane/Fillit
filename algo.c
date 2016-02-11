@@ -46,7 +46,6 @@ int	canbeplace(t_list *tetri, int max)
 
 int	algo(t_list *start, t_list *actuel, int max)
 {
-	//printf("test for %d %d for id %d\n", actuel->coord[0], actuel->coord[1], actuel->id);
 	if (actuel->coord[0] == 1000)
 		reset(actuel, 0);
 	else
@@ -65,8 +64,6 @@ int	algo(t_list *start, t_list *actuel, int max)
 	}
 	if (canbeplace(start, max))
 	{
-		//printf("==can be place in %d %d for id %d==\n", actuel->coord[0], actuel->coord[1], actuel->id);
-
 		if (actuel->next == NULL)
 			return (1);
 		if (algo(start, actuel->next, max))

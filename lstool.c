@@ -6,7 +6,6 @@ void	init_list(t_list *lst)
 
 	lst->coord[0] = 1000;
 	lst->coord[1] = 1000;
-	lst->id = -1;
 	i = -1;
 	while (++i < 6)
 		lst->point[i / 2][i % 2] = -1;
@@ -37,5 +36,13 @@ int	free_list(t_list *lst)
 	free(lst->point[0]);
 	free(lst->point);
 	free(lst);
+	return (0);
+}
+
+int	free_all(t_list *lst)
+{
+	if (lst->next)
+		free_all(lst->next);
+	free_list(lst);
 	return (0);
 }
