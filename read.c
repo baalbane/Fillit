@@ -16,9 +16,8 @@ t_list	*goread(int fd)
 	tetri = malloc(sizeof(char) * (BUFF_SIZE + 1));
 	ret = read(fd, tetri, BUFF_SIZE);
 	tetri[ret] = '\0';
-	//printf("test01\n%s", tetri);
 	if (check(tetri))
-		fill_lst(start, NULL, tetri);
+		fill_lst(start, tetri);
 	else
 	{
 		return (NULL);
@@ -32,7 +31,7 @@ t_list	*goread(int fd)
 		prev->next = new;
 
 		if (check(tetri))
-			fill_lst(new, prev, tetri);
+			fill_lst(new, tetri);
 		else
 		{
 			return (NULL); //FREE
@@ -44,7 +43,7 @@ t_list	*goread(int fd)
 	return (start);
 }
 
-int	fill_lst(t_list *new, t_list *prev, char *tetri)
+int	fill_lst(t_list *new, char *tetri)
 {
 	int	i;
 	int	coord[2];

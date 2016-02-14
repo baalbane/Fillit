@@ -33,7 +33,7 @@ t_list	*new_list();
 void	init_list(t_list *lst);
 
 t_list	*goread(int fd);
-int	fill_lst(t_list *new, t_list *prev, char *tetri);
+int	fill_lst(t_list *new, char *tetri);
 
 int	inittab(char **tab, int len);
 int	printmap(t_list *start, int len);
