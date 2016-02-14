@@ -23,6 +23,8 @@ int	reset(t_list *actuel, int nbr);
 int	ft_strlen(char *str);
 int	**taballoc(int size);
 int	freetab(int **tab, int nbr);
+int	ft_sqrt(int nbr);
+int	getsquare(t_list *start);
 
 int	free_list(t_list *lst);
 int	free_all(t_list *lst);
