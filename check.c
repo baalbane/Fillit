@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   check.c                                            :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: baalbane <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2016/05/18 18:00:51 by baalbane          #+#    #+#             */
+/*   Updated: 2016/05/18 18:36:37 by baalbane         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "fillit.h"
 
 int	counttetri(char *tetri, int j)
@@ -5,26 +17,14 @@ int	counttetri(char *tetri, int j)
 	int	nbr;
 
 	nbr = 0;
-	if (j > 4)
-	{
-		if (tetri[j-5] == '#')
-			nbr++;
-	}
-	if (j%5 != 0)
-	{
-		if (tetri[j-1] == '#')
-			nbr++;
-	}
-	if (j%5 < 3)
-	{
-		if (tetri[j+1] == '#')
-			nbr++;
-	}
-	if (j < 15)
-	{
-		if (tetri[j+5] == '#')
-			nbr++;
-	}
+	if (j > 4 && tetri[j - 5] == '#')
+		nbr++;
+	if (j % 5 != 0 && tetri[j - 1] == '#')
+		nbr++;
+	if (j % 5 < 3 && tetri[j + 1] == '#')
+		nbr++;
+	if (j < 15 && tetri[j + 5] == '#')
+		nbr++;
 	return (nbr);
 }
 
@@ -46,6 +46,19 @@ int	newtab(int *tab)
 	return (1);
 }
 
+int	checkline(char *tetri, int *tab)
+{
+	if (tetri[4] != '\n' || tetri[9] != '\n' || tetri[14] != '\n'
+	|| tetri[19] != '\n' || !(checktab(tab))
+	|| (ft_strlen(tetri) == 21 && tetri[20] != '\n'))
+	{
+		free(tab);
+		return (0);
+	}
+	free(tab);
+	return (1);
+}
+
 int	check(char *tetri)
 {
 	int	i;
@@ -62,22 +75,15 @@ int	check(char *tetri)
 	{
 		if (tetri[j] == '#' && i <= 3)
 			tab[i++] = counttetri(tetri, j);
+		else if (tetri[j] == '#' && i > 3)
+			j = 53;
 		else if (tetri[j] == '\n')
 			count++;
 		else if (tetri[j] != '.')
-			j = 54;
+			j = 53;
 		j++;
 	}
-	if (tetri[4] != '\n' || tetri[9] != '\n' || tetri[14] != '\n'
-			|| tetri[19] != '\n' || !(checktab(tab)))
-		j = 54;	
-	if (ft_strlen(tetri) == 21)
-	{
-		if (tetri[20] != '\n')
-			j = 54;
-	}
-	free(tab);
-	if (j > 50)
+	if (j > 53 || !checkline(tetri, tab))
 		return (0);
 	return (1);
 }

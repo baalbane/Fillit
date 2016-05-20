@@ -1,19 +1,16 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   tool.c                                             :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: baalbane <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2016/05/20 13:27:11 by baalbane          #+#    #+#             */
+/*   Updated: 2016/05/20 13:48:19 by baalbane         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "fillit.h"
-
-
-int	ft_sqrt(int nbr)
-{
-	int	i;
-
-	i = 1;
-	while ((i * i) < nbr)
-	{
-		if ((i * i) == nbr)
-			return (i);
-		i++;
-	}
-	return (i);
-}
 
 int	getsquare(t_list *start)
 {
@@ -26,7 +23,6 @@ int	getsquare(t_list *start)
 		return (0);
 	i = ft_sqrt(i * 4);
 	return (i);
-
 }
 
 int	reset(t_list *actuel, int nbr)
@@ -46,15 +42,13 @@ int	ft_strlen(char *str)
 	return (i);
 }
 
-
 int	**taballoc(int size)
 {
 	int	**tab;
 	int	i;
-	//printf("|| launch tab malloc ||\n");
 
-	i = 0;	
-	tab = malloc(sizeof(int) * size + 1);
+	i = 0;
+	tab = malloc(sizeof(int*) * (size + 1));
 	while (i < size)
 	{
 		tab[i] = malloc(sizeof(int) * 2);
@@ -65,7 +59,6 @@ int	**taballoc(int size)
 	tab[i] = malloc(sizeof(int) * 2);
 	tab[i][0] = -40;
 	tab[i][1] = -40;
-	//printf("|| tab malloc success ||\n");
 	return (tab);
 }
 

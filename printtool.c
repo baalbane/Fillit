@@ -1,34 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   printtool.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: baalbane <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2016/05/18 18:27:43 by baalbane          #+#    #+#             */
-/*   Updated: 2016/05/20 13:46:29 by baalbane         ###   ########.fr       */
+/*   Created: 2016/05/20 13:20:34 by baalbane          #+#    #+#             */
+/*   Updated: 2016/05/20 13:21:21 by baalbane         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fillit.h"
 
-int		main(int ac, char **av)
+void	ft_putchar(char c)
 {
-	int		i;
-	t_list	*start;
+	write(1, &c, 1);
+}
 
-	if (launchread(av, ac, &start) == -1)
-	{
-		free_all(start);
-		return (0);
-	}
-	i = getsquare(start);
-	if (i > 0)
-	{
-		while (!(algo(start, start, i)))
-			i++;
-		printmap(start, i);
-	}
-	free_all(start);
-	return (0);
+void	ft_putstr(char *s)
+{
+	int i;
+
+	i = 0;
+	while (s[i])
+		ft_putchar(s[i++]);
 }
